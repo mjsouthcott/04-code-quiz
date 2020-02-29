@@ -1,0 +1,29 @@
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+#wrapper {
+    padding: 10px;
+}
+
+header p {
+    display: inline;
+}
+
+.container {
+    width: 25%;
+    text-align: center;
+}
+
+h1,
+p {
+    margin-bottom: 20px;
+}
+
+button {
+    width: 150px;
+}
