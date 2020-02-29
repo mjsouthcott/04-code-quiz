@@ -17,7 +17,7 @@ let question3 = {
 }
 
 let question4 = {
-    question: "In the array [\"white\", \"black\", \"custom\"], what is the index of the element whose value is \"black\"?"
+    question: "In the array [\"white\", \"black\", \"custom\"], what is the index of the element whose value is \"black\"?",
     answers: ["-1", "0", "1", "2"],
     correctAnswer: 2
 }
