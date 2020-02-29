@@ -8,7 +8,7 @@ This website meets all of the acceptance criteria specified by the customer.
 
 ## Installation
 
-Click on the following URL to view the website in your browser: [https://mjsouthcott.github.io/04-code-quiz/](https://mjsouthcott.github.io/04-code-quiz/)
+Click on the following URL to view the website in your browser: [https://mjsouthcott.github.io/04-code-quiz/](https://mjsouthcott.github.io/04-code-quiz/).
 
 ## Usage
 
