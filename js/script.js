@@ -1,29 +1,36 @@
-let question1 = {
-    question: "Which of the following belongs to the set of the built-in objects that comes with a browser?",
-    answers: ["Browser Object Model", "Document Object Model", "Global JavaScript Models", "All of the above"],
-    correctAnswer: 3
+let $timer = $('#timer')
+let $startQuizButton = $('#start-quiz')
+let $container = $('.container')
+let questionList = JSON.stringify(questions)
+console.log(questionList)
+
+let timeRemaining = 5
+
+function randomizeQuestions() {
+
 }
 
-let question2 = {
-    question: "What does the string object \"trim()\" method do?",
-    answers: ["Changes the string to lowercase characters", "Changes the string to uppercase characters", "Removes white space from the start and end of the string", "None of the above"],
-    correctAnswer: 2
+function startGame() {
+
 }
 
-let question3 = {
-    question: "What keyword should you use when declaring a variable?",
-    answers: ["def", "let", "var", "None of the above"],
-    correctAnswer: 1
+function startTimer() {
+    let timerInterval = setInterval(function() {
+        timeRemaining--
+        $timer.text(timeRemaining)
+        if (timeRemaining === 0) {
+            clearInterval(timerInterval)
+            endGame()
+        }
+    }, 1000)
 }
 
-let question4 = {
-    question: "In the array [\"white\", \"black\", \"custom\"], what is the index of the element whose value is \"black\"?",
-    answers: ["-1", "0", "1", "2"],
-    correctAnswer: 2
+function endGame() {
+    $container.html('<h1>Game Over</h1>')
 }
 
-let question5 = {
-    question: "Which of the following is an arithmetic operator?",
-    answers: ["true", "&&", "!", "%"],
-    correctAnswer: 3
-}
+$startQuizButton.on('click', function(e) {
+    e.preventDefault()
+    $container.html('')
+    startTimer()
+})
