@@ -1,7 +1,7 @@
 let $timer = $('#timer')
 let $startQuizButton = $('#start-quiz')
 let $container = $('.container')
-let $answerList = $('.ul')
+let $answerList = $('ol')
 
 let timeRemaining = 60
 let questionIndex = 0
@@ -20,41 +20,34 @@ function randomizeQuestionList(questionList) {
 }
 
 function startQuiz() {
-    let msg = ""
-    msg += "<h3>" + questionList[questionIndex]["question"] + "</h3>"
-    msg += "<ol><li><button id=\"answer1\">1. " + questionList[questionIndex]["answers"][0] + "</button></li>"
-    msg += "<li><button id=\"answer2\">2. " + questionList[questionIndex]["answers"][1] + "</button></li>"
-    msg += "<li><button id=\"answer3\">3. " + questionList[questionIndex]["answers"][2] + "</button></li>"
-    msg += "<li><button id=\"answer4\">4. " + questionList[questionIndex]["answers"][3] + "</button></li></ol>"
-    $container.html(msg)
     startTimer()
-    questionIndex++
-}
-
-function continueQuiz() {
-    if (questionIndex < randomizedQuestionList.length) {
-        let msg = ""
-        msg += "<h3>" + questionList[questionIndex]["question"] + "</h3>"
-        msg += "<ol><li><button id=\"answer1\">1. " + questionList[questionIndex]["answers"][0] + "</button></li>"
-        msg += "<li><button id=\"answer2\">2. " + questionList[questionIndex]["answers"][1] + "</button></li>"
-        msg += "<li><button id=\"answer3\">3. " + questionList[questionIndex]["answers"][2] + "</button></li>"
-        msg += "<li><button id=\"answer4\">4. " + questionList[questionIndex]["answers"][3] + "</button></li></ol>"
-        $container.html(msg)
-        questionIndex++
-    } else {
-        endQuiz()
-    }
+    nextQuestion()
 }
 
 function startTimer() {
     let timerInterval = setInterval(function() {
         timeRemaining--
         $timer.text(timeRemaining)
-        if (timeRemaining === 0) {
+        if (timeRemaining < 1) {
             clearInterval(timerInterval)
+            $timer.text(0)
             endQuiz()
         }
     }, 1000)
+}
+
+function nextQuestion() {
+    let msg = ""
+    if (questionIndex < questionList.length) {
+        msg += '<h3>' + questionList[questionIndex]["question"] + '</h3>'
+        msg += '<ol><li><button id="answer1">1. ' + questionList[questionIndex]["answers"][0] + '</button></li>'
+        msg += '<li><button id="answer2">2. ' + questionList[questionIndex]["answers"][1] + '</button></li>'
+        msg += '<li><button id="answer3">3. ' + questionList[questionIndex]["answers"][2] + '</button></li>'
+        msg += '<li><button id="answer4">4. ' + questionList[questionIndex]["answers"][3] + '</button></li></ol>'
+        $container.html(msg)
+    } else {
+        endQuiz()
+    }
 }
 
 function endQuiz() {
@@ -68,9 +61,19 @@ $startQuizButton.on('click', function(e) {
     startQuiz()
 })
 
-// TODO
-$answerList.on('click', 'li button', function(e) {
+$container.on('click', 'ol button', function(e) {
     e.preventDefault()
-    let $this = $(this)
-    console.log($this.value)
+    $this = $(this)
+    if (questionList[questionIndex]["correctAnswer"] === $this.attr('id')) {
+        // TODO
+        console.log("Correct")
+        $container.append('<p class="feedback" id="correct">Correct answer</p>')
+    } else {
+        // TODO
+        console.log("Incorrect")
+        timeRemaining = timeRemaining - 10
+        $container.append('<p class="feedback" id="incorrect">Incorrect answer</p>')
+    }
+    questionIndex++
+    nextQuestion()
 })

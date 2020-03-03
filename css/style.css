@@ -47,3 +47,16 @@ ol {
 li {
     margin-bottom: 8px;
 }
+
+.feedback {
+    border-top: 1px solid black;
+    text-align: left;
+}
+
+#correct {
+    color: green;
+}
+
+#incorrect {
+    color: red;
+}
