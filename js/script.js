@@ -1,6 +1,6 @@
 let $timer = $('#timer')
 let $startQuizButton = $('#start-quiz')
-let $container = $('.container')
+let $content = $('#content')
 let $feedback = $('#feedback')
 
 let timeRemaining = 60
@@ -38,19 +38,19 @@ function startTimer() {
 
 function nextQuestion() {
     if (questionIndex < questionList.length) {
-        let msg = '<h3>' + questionList[questionIndex]["question"] + '</h3>'
-        msg += '<ol><li><button id="answer1">1. ' + questionList[questionIndex]["answers"][0] + '</button></li>'
-        msg += '<li><button id="answer2">2. ' + questionList[questionIndex]["answers"][1] + '</button></li>'
-        msg += '<li><button id="answer3">3. ' + questionList[questionIndex]["answers"][2] + '</button></li>'
-        msg += '<li><button id="answer4">4. ' + questionList[questionIndex]["answers"][3] + '</button></li></ol>'
-        $container.html(msg)
+        let msg = '<h3>' + questionList[questionIndex]["question"] + '</h3><ol>'
+        for (let i = 0; i < questionList[questionIndex]["answers"].length; i++) {
+            msg += '<li><button id="answer' + (i + 1) + '">' + (i + 1) + '. ' + questionList[questionIndex]["answers"][i] + '</button></li>'
+        }
+        msg += '</ol>'
+        $content.html(msg)
     } else {
         endQuiz()
     }
 }
 
 function endQuiz() {
-    $container.html('<h1>Game Over</h1>')
+    $content.html('<h1>Game Over</h1>')
 }
 
 $startQuizButton.on('click', function() {
@@ -58,7 +58,7 @@ $startQuizButton.on('click', function() {
     startQuiz()
 })
 
-$container.on('click', 'ol button', function(e) {
+$content.on('click', 'ol button', function(e) {
     e.preventDefault()
     $this = $(this)
     if (questionList[questionIndex]["correctAnswer"] === $this.attr('id')) {
