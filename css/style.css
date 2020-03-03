@@ -25,5 +25,25 @@ p {
 }
 
 button {
+    background-color: purple;
+    color: white;
+}
+
+#start-quiz {
     width: 150px;
+}
+
+h3 {
+    text-align: left;
+    height: 100px;
+}
+
+ol {
+    list-style-type: none;
+    padding-left: 0px;
+    text-align: left;
+}
+
+li {
+    margin-bottom: 8px;
 }
