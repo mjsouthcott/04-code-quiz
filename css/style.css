@@ -17,6 +17,7 @@ header p {
 .container {
     width: 25%;
     text-align: center;
+    margin: auto;
 }
 
 h1,
@@ -48,15 +49,18 @@ li {
     margin-bottom: 8px;
 }
 
-.feedback {
-    border-top: 1px solid black;
+#feedback {
+    width: 25%;
     text-align: left;
+    margin: auto;
 }
 
 #correct {
+    border-top: 1px solid black;
     color: green;
 }
 
 #incorrect {
+    border-top: 1px solid black;
     color: red;
 }

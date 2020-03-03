@@ -1,7 +1,7 @@
 let $timer = $('#timer')
 let $startQuizButton = $('#start-quiz')
 let $container = $('.container')
-let $answerList = $('ol')
+let $feedback = $('#feedback')
 
 let timeRemaining = 60
 let questionIndex = 0
@@ -37,9 +37,8 @@ function startTimer() {
 }
 
 function nextQuestion() {
-    let msg = ""
     if (questionIndex < questionList.length) {
-        msg += '<h3>' + questionList[questionIndex]["question"] + '</h3>'
+        let msg = '<h3>' + questionList[questionIndex]["question"] + '</h3>'
         msg += '<ol><li><button id="answer1">1. ' + questionList[questionIndex]["answers"][0] + '</button></li>'
         msg += '<li><button id="answer2">2. ' + questionList[questionIndex]["answers"][1] + '</button></li>'
         msg += '<li><button id="answer3">3. ' + questionList[questionIndex]["answers"][2] + '</button></li>'
@@ -54,9 +53,7 @@ function endQuiz() {
     $container.html('<h1>Game Over</h1>')
 }
 
-$startQuizButton.on('click', function(e) {
-    e.preventDefault()
-    $container.html('')
+$startQuizButton.on('click', function() {
     randomizeQuestionList(questionList)
     startQuiz()
 })
@@ -65,14 +62,14 @@ $container.on('click', 'ol button', function(e) {
     e.preventDefault()
     $this = $(this)
     if (questionList[questionIndex]["correctAnswer"] === $this.attr('id')) {
-        // TODO
-        console.log("Correct")
-        $container.append('<p class="feedback" id="correct">Correct answer</p>')
+        $feedback.html('<p id="correct">Correct answer</p>')
+            // TODO
+            //$feedback.fadeout("fast", function() { $this.remove() })
     } else {
-        // TODO
-        console.log("Incorrect")
         timeRemaining = timeRemaining - 10
-        $container.append('<p class="feedback" id="incorrect">Incorrect answer</p>')
+        $feedback.html('<p id="incorrect">Incorrect answer</p>')
+            // TODO
+            //$feedback.fadeout("fast", function() { $this.remove() })
     }
     questionIndex++
     nextQuestion()
