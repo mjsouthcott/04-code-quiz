@@ -65,14 +65,13 @@ $content.on('click', 'ol button', function(e) {
         $feedback.html('<p id="correct">Correct answer</p>')
         setTimeout(function() {
             $feedback.html('')
-        }, 1500)
-
+        }, 1000)
     } else {
         timeRemaining = timeRemaining - 10
         $feedback.html('<p id="incorrect">Incorrect answer</p>')
         setTimeout(function() {
             $feedback.html('')
-        }, 1500)
+        }, 1000)
     }
     questionIndex++
     nextQuestion()
