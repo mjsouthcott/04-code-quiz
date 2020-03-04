@@ -5,6 +5,7 @@ let $feedback = $('#feedback')
 
 let timeRemaining = 60
 let questionIndex = 0
+let score
 
 function randomizeQuestionList(questionList) {
     let currentIndex = questionList.length
@@ -50,7 +51,10 @@ function nextQuestion() {
 }
 
 function endQuiz() {
-    $content.html('<h1>Game Over</h1>')
+    let score = timeRemaining
+    let msg = '<h1>Game Over</h1>'
+    msg += '<p>Score: ' + score + '</p>'
+    $content.html(msg)
 }
 
 $startQuizButton.on('click', function() {
