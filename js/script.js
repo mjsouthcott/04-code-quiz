@@ -5,7 +5,7 @@ let $feedback = $('#feedback')
 
 let timeRemaining = 60
 let questionIndex = 0
-let timerInterval, score
+let timerInterval
 
 function randomizeQuestionList(questionList) {
     let currentIndex = questionList.length
