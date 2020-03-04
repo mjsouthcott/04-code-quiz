@@ -1,11 +1,16 @@
 let $timer = $('#timer')
 let $startQuizButton = $('#start-quiz')
 let $content = $('#content')
-let $feedback = $('#feedback')
+let $landing = $('#landing')
+let $question = $(document.createElement('div')).attr('id', 'question')
+let $answerFeedback = $(document.createElement('div')).attr('id', 'answer-feedback')
+let $enterHighScore = $(document.createElement('div')).attr('id', 'enter-high-score')
 
 let timeRemaining = 60
 let questionIndex = 0
 let timerInterval
+let numQuizzes = 0
+let initials = []
 
 function randomizeQuestionList(questionList) {
     let currentIndex = questionList.length
@@ -21,6 +26,8 @@ function randomizeQuestionList(questionList) {
 }
 
 function startQuiz() {
+    $landing.remove()
+    $content.prepend($question)
     startTimer()
     nextQuestion()
 }
@@ -36,24 +43,28 @@ function startTimer() {
 }
 
 function nextQuestion() {
+    $question.html('')
     if (questionIndex < questionList.length) {
-        let msg = '<h3>' + questionList[questionIndex]["question"] + '</h3><ol>'
+        let questionMsg = '<h3>' + questionList[questionIndex]["question"] + '</h3><ol>'
         for (let i = 0; i < questionList[questionIndex]["answers"].length; i++) {
-            msg += '<li><button id="answer' + (i + 1) + '">' + (i + 1) + '. ' + questionList[questionIndex]["answers"][i] + '</button></li>'
+            questionMsg += '<li><button id="answer' + (i + 1) + '">' + (i + 1) + '. ' + questionList[questionIndex]["answers"][i] + '</button></li>'
         }
-        msg += '</ol>'
-        $content.html(msg)
+        questionMsg += '</ol>'
+        $question.append(questionMsg)
     } else {
         endQuiz()
     }
 }
 
 function endQuiz() {
+    $question.remove()
     clearInterval(timerInterval)
     $timer.text(timeRemaining)
-    let msg = '<h1>Game Over</h1>'
-    msg += '<p>Score: ' + timeRemaining + '</p>'
-    $content.html(msg)
+    let enterHighScoreMsg = '<h3>All done!</h3>'
+    enterHighScoreMsg += '<p>Your final score is: ' + timeRemaining + '.</p>'
+    $enterHighScore.html(enterHighScoreMsg)
+    $content.prepend($enterHighScore)
+    numQuizzes++
 }
 
 $startQuizButton.on('click', function() {
@@ -64,16 +75,19 @@ $startQuizButton.on('click', function() {
 $content.on('click', 'ol button', function(e) {
     e.preventDefault()
     $this = $(this)
+    $answerFeedback.html('')
     if (questionList[questionIndex]["correctAnswer"] === $this.attr('id')) {
-        $feedback.html('<p id="correct">Correct answer</p>')
+        $answerFeedback.append('<p id="correct">Correct!</p>')
+        $content.append($answerFeedback)
         setTimeout(function() {
-            $feedback.html('')
+            $answerFeedback.remove()
         }, 1000)
     } else {
         timeRemaining = timeRemaining - 10
-        $feedback.html('<p id="incorrect">Incorrect answer</p>')
+        $answerFeedback.append('<p id="incorrect">Incorrect!</p>')
+        $content.append($answerFeedback)
         setTimeout(function() {
-            $feedback.html('')
+            $answerFeedback.remove()
         }, 1000)
     }
     if (timeRemaining < 0) {

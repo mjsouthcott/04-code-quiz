@@ -14,10 +14,14 @@ header p {
     display: inline;
 }
 
-.container {
+#content {
     width: 25%;
-    text-align: center;
+    text-align: left;
     margin: auto;
+}
+
+#landing {
+    text-align: center;
 }
 
 h1,
@@ -26,7 +30,7 @@ p {
 }
 
 button {
-    background-color: purple;
+    background-color: blueviolet;
     color: white;
 }
 
@@ -35,30 +39,27 @@ button {
 }
 
 h3 {
-    text-align: left;
     height: 100px;
 }
 
 ol {
     list-style-type: none;
     padding-left: 0px;
-    text-align: left;
 }
 
 li {
     margin-bottom: 8px;
 }
 
-#feedback {
-    text-align: left;
+#answer-feedback {
+    font-style: italic;
+    border-top: 1px solid black;
 }
 
 #correct {
-    border-top: 1px solid black;
     color: green;
 }
 
 #incorrect {
-    border-top: 1px solid black;
     color: red;
 }
