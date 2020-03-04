@@ -5,7 +5,7 @@ let $feedback = $('#feedback')
 
 let timeRemaining = 60
 let questionIndex = 0
-let score
+let timerInterval, score
 
 function randomizeQuestionList(questionList) {
     let currentIndex = questionList.length
@@ -26,12 +26,10 @@ function startQuiz() {
 }
 
 function startTimer() {
-    let timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
         timeRemaining--
         $timer.text(timeRemaining)
-        if (timeRemaining < 1) {
-            clearInterval(timerInterval)
-            $timer.text(0)
+        if (timeRemaining === 0) {
             endQuiz()
         }
     }, 1000)
@@ -51,9 +49,10 @@ function nextQuestion() {
 }
 
 function endQuiz() {
-    let score = timeRemaining
+    clearInterval(timerInterval)
+    $timer.text(timeRemaining)
     let msg = '<h1>Game Over</h1>'
-    msg += '<p>Score: ' + score + '</p>'
+    msg += '<p>Score: ' + timeRemaining + '</p>'
     $content.html(msg)
 }
 
@@ -77,6 +76,11 @@ $content.on('click', 'ol button', function(e) {
             $feedback.html('')
         }, 1000)
     }
-    questionIndex++
-    nextQuestion()
+    if (timeRemaining < 0) {
+        timeRemaining = 0
+        endQuiz()
+    } else {
+        questionIndex++
+        nextQuestion()
+    }
 })
