@@ -63,13 +63,16 @@ $content.on('click', 'ol button', function(e) {
     $this = $(this)
     if (questionList[questionIndex]["correctAnswer"] === $this.attr('id')) {
         $feedback.html('<p id="correct">Correct answer</p>')
-            // TODO
-            //$feedback.fadeout("fast", function() { $this.remove() })
+        setTimeout(function() {
+            $feedback.html('')
+        }, 1500)
+
     } else {
         timeRemaining = timeRemaining - 10
         $feedback.html('<p id="incorrect">Incorrect answer</p>')
-            // TODO
-            //$feedback.fadeout("fast", function() { $this.remove() })
+        setTimeout(function() {
+            $feedback.html('')
+        }, 1500)
     }
     questionIndex++
     nextQuestion()
