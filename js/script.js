@@ -1,16 +1,18 @@
 let $timer = $('#timer')
-let $startQuizButton = $('#start-quiz')
 let $content = $('#content')
 let $landing = $('#landing')
 let $question = $(document.createElement('div')).attr('id', 'question')
 let $answerFeedback = $(document.createElement('div')).attr('id', 'answer-feedback')
 let $enterHighScore = $(document.createElement('div')).attr('id', 'enter-high-score')
+    //let $initials = $('#initials')
 
 let timeRemaining = 60
 let questionIndex = 0
 let timerInterval
 let numQuizzes = 0
-let initials = []
+    //localStorage.setItem('numQuizzes', JSON.stringify(numQuizzes))
+let initialsArray = []
+    //localStorage.setItem('initialsArray', JSON.stringify(initialsArray))
 
 function randomizeQuestionList(questionList) {
     let currentIndex = questionList.length
@@ -62,12 +64,13 @@ function endQuiz() {
     $timer.text(timeRemaining)
     let enterHighScoreMsg = '<h3>All done!</h3>'
     enterHighScoreMsg += '<p>Your final score is: ' + timeRemaining + '.</p>'
+    enterHighScoreMsg += '<form><p>Enter initials: <input id="initials" type="text" name="initials" size="15" maxlength="15" required="required" />'
+    enterHighScoreMsg += '<input id="submit" type="submit" name="submit" value="Submit" /></p></form>'
     $enterHighScore.html(enterHighScoreMsg)
     $content.prepend($enterHighScore)
-    numQuizzes++
 }
 
-$startQuizButton.on('click', function() {
+$content.on('click', '#start-quiz', function() {
     randomizeQuestionList(questionList)
     startQuiz()
 })
@@ -97,4 +100,19 @@ $content.on('click', 'ol button', function(e) {
         questionIndex++
         nextQuestion()
     }
+})
+
+$content.on('click', '#submit', function(e) {
+    e.preventDefault()
+        /* TODO
+        numQuizzes2 = JSON.parse(localStorage.getItem('numQuizzes'))
+        console.log(numQuizzes2)
+        initialsArray2 = JSON.parse(localStorage.getItem('numQuizzes'))
+        console.log(initialsArray2)
+        initialsArray2[numQuizzes2] = document.getElementById('initials').value.toUpperCase()
+        localStorage.setItem('initialsArray', JSON.stringify(initialsArray2))
+        numQuizzes2++
+        localStorage.setItem('numQuizzes', JSON.stringify(numQuizzes2))
+        */
+    window.location.href = "high-scores/index.html"
 })
