@@ -9,10 +9,13 @@ let $enterHighScore = $(document.createElement('div')).attr('id', 'enter-high-sc
 let timeRemaining = 60
 let questionIndex = 0
 let timerInterval
-let numQuizzes = 0
-    //localStorage.setItem('numQuizzes', JSON.stringify(numQuizzes))
-let initialsArray = []
-    //localStorage.setItem('initialsArray', JSON.stringify(initialsArray))
+if (!localStorage.getItem('initialsArray')) {
+    let initialsArray = []
+    localStorage.setItem('initialsArray', JSON.stringify(initialsArray))
+}
+if (!localStorage.getItem('numQuizzes')) {
+    localStorage.setItem('numQuizzes', 0)
+}
 
 function randomizeQuestionList(questionList) {
     let currentIndex = questionList.length
@@ -104,15 +107,14 @@ $content.on('click', 'ol button', function(e) {
 
 $content.on('click', '#submit', function(e) {
     e.preventDefault()
-        /* TODO
-        numQuizzes2 = JSON.parse(localStorage.getItem('numQuizzes'))
-        console.log(numQuizzes2)
-        initialsArray2 = JSON.parse(localStorage.getItem('numQuizzes'))
-        console.log(initialsArray2)
-        initialsArray2[numQuizzes2] = document.getElementById('initials').value.toUpperCase()
-        localStorage.setItem('initialsArray', JSON.stringify(initialsArray2))
-        numQuizzes2++
-        localStorage.setItem('numQuizzes', JSON.stringify(numQuizzes2))
-        */
+    let numQuizzes = localStorage.getItem('numQuizzes')
+    initialsArray = JSON.parse(localStorage.getItem('initialsArray'))
+    initialsArray.push(new Object())
+        // is there a way to use a jQuery object/method?
+    initialsArray[numQuizzes].initials = document.getElementById('initials').value.toUpperCase()
+    initialsArray[numQuizzes].score = timeRemaining
+    localStorage.setItem('initialsArray', JSON.stringify(initialsArray))
+    numQuizzes++
+    localStorage.setItem('numQuizzes', numQuizzes)
     window.location.href = "high-scores/index.html"
 })
