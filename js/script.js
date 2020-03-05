@@ -9,9 +9,9 @@ let $enterHighScore = $(document.createElement('div')).attr('id', 'enter-high-sc
 let timeRemaining = 60
 let questionIndex = 0
 let timerInterval
-if (!localStorage.getItem('initialsArray')) {
-    let initialsArray = []
-    localStorage.setItem('initialsArray', JSON.stringify(initialsArray))
+if (!localStorage.getItem('highScores')) {
+    let highScores = []
+    localStorage.setItem('highScores', JSON.stringify(highScores))
 }
 if (!localStorage.getItem('numQuizzes')) {
     localStorage.setItem('numQuizzes', 0)
@@ -108,12 +108,12 @@ $content.on('click', 'ol button', function(e) {
 $content.on('click', '#submit', function(e) {
     e.preventDefault()
     let numQuizzes = localStorage.getItem('numQuizzes')
-    initialsArray = JSON.parse(localStorage.getItem('initialsArray'))
-    initialsArray.push(new Object())
+    highScores = JSON.parse(localStorage.getItem('highScores'))
+    highScores.push(new Object())
         // is there a way to use a jQuery object/method?
-    initialsArray[numQuizzes].initials = document.getElementById('initials').value.toUpperCase()
-    initialsArray[numQuizzes].score = timeRemaining
-    localStorage.setItem('initialsArray', JSON.stringify(initialsArray))
+    highScores[numQuizzes].initials = document.getElementById('initials').value.toUpperCase()
+    highScores[numQuizzes].score = timeRemaining
+    localStorage.setItem('highScores', JSON.stringify(highScores))
     numQuizzes++
     localStorage.setItem('numQuizzes', numQuizzes)
     window.location.href = "high-scores/index.html"
