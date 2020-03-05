@@ -16,15 +16,26 @@
     margin: 24px auto;
 }
 
-#high-score-list {
-    text-align: center;
-}
-
 h1,
 ul {
     margin-bottom: 20px;
 }
 
+ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+li {
+    background-color: mediumpurple;
+}
+
 button {
+    background-color: blueviolet;
+    color: white;
     width: 150px;
+}
+
+button:hover {
+    background-color: mediumpurple;
 }
