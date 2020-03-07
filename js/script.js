@@ -7,7 +7,7 @@ let $answerFeedback = $(document.createElement('div')).attr('id', 'answer-feedba
 let $enterHighScore = $(document.createElement('div')).attr('id', 'enter-high-score')
 
 // Various constants/variables
-const timeRemaining = 60
+let timeRemaining = 60
 let questionIndex = 0
 let timerInterval
 
