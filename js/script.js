@@ -13,12 +13,12 @@ $(document).ready(() => {
     let timerInterval
 
     // Variables in localStorage (only declared/initialized if they don't already exist)
-    if (!localStorage.getItem('highScores')) {
+    if (!window.localStorage.getItem('highScores')) {
         let highScores = []
-        localStorage.setItem('highScores', JSON.stringify(highScores))
+        window.localStorage.setItem('highScores', JSON.stringify(highScores))
     }
-    if (!localStorage.getItem('numQuizzes')) {
-        localStorage.setItem('numQuizzes', 0)
+    if (!window.localStorage.getItem('numQuizzes')) {
+        window.localStorage.setItem('numQuizzes', 0)
     }
 
     // Function to randomize the question list. Accepts and returns an array.
@@ -120,14 +120,14 @@ $(document).ready(() => {
     // Event listener on the submit button. Gets variables from localStorage, updates their values, and sets them in localStorage. Then takes user to High Score List page.
     $content.on('click', '#submit', function(e) {
         e.preventDefault()
-        let numQuizzes = localStorage.getItem('numQuizzes')
-        highScores = JSON.parse(localStorage.getItem('highScores'))
+        let numQuizzes = window.localStorage.getItem('numQuizzes')
+        highScores = JSON.parse(window.localStorage.getItem('highScores'))
         highScores.push(new Object())
         highScores[numQuizzes].initials = document.getElementById('initials').value.toUpperCase()
         highScores[numQuizzes].score = timeRemaining
-        localStorage.setItem('highScores', JSON.stringify(highScores))
+        window.localStorage.setItem('highScores', JSON.stringify(highScores))
         numQuizzes++
-        localStorage.setItem('numQuizzes', numQuizzes)
+        window.localStorage.setItem('numQuizzes', numQuizzes)
         window.location.href = "high-scores/index.html"
     })
 })

@@ -1,6 +1,6 @@
 $(document).ready(() => {
     // Get highScores from localStorage
-    let highScores = JSON.parse(localStorage.getItem('highScores'))
+    let highScores = JSON.parse(window.localStorage.getItem('highScores'))
 
     // Sort highScores in descending order by score
     highScores.sort(function(a, b) {
@@ -17,8 +17,8 @@ $(document).ready(() => {
     $('#clear-high-scores').on('click', function(e) {
         e.preventDefault()
         highScores = []
-        localStorage.setItem('highScores', JSON.stringify(highScores))
-        localStorage.setItem('numQuizzes', 0)
+        window.localStorage.setItem('highScores', JSON.stringify(highScores))
+        window.localStorage.setItem('numQuizzes', 0)
         $('#high-score-list ul').html('')
     })
 })
