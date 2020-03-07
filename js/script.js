@@ -67,6 +67,7 @@ function nextQuestion() {
         endQuiz()
     }
 }
+
 // Function to end the quiz. Removes the question container and replaces it with the enter-high-score container. Clears timerInterval and displays the time when the quiz ended.
 function endQuiz() {
     $question.remove()
@@ -114,7 +115,6 @@ $content.on('click', 'ol button', function(e) {
         nextQuestion()
     }
 })
-
 
 // Event listener on the submit button. Gets variables from localStorage, updates their values, and sets them in localStorage. Then takes user to High Score List page.
 $content.on('click', '#submit', function(e) {
