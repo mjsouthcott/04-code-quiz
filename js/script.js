@@ -101,7 +101,7 @@ $(document).ready(() => {
                 $answerFeedback.remove()
             }, 1000)
         } else {
-            timeRemaining = timeRemaining - 10
+            timeRemaining -= 10
             $answerFeedback.append('<p id="incorrect">Incorrect!</p>')
             $content.append($answerFeedback)
             setTimeout(function() {
