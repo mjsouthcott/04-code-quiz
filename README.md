@@ -16,15 +16,15 @@ Click on the following URL to view the website in your browser: [https://mjsouth
 
 ![Step 1](https://github.com/mjsouthcott/04-code-quiz/blob/master/images/image1.JPG)
 
-2.  Once the quiz starts, a question from a randomized list will appear in the center of the window. Select 1 of 4 answers to move on to the next question (feedback will appear below the 4th answer telling you if you selected the correct answer or not). Note that the timer will begin counting down from 60 seconds (if it reaches 0 before you answer the 5th question, the quiz will end).
+2.  Once the quiz starts, a question from a randomized list will appear in the center of the window. Select 1 of 4 answers to move on to the next question (feedback will appear below the 4th answer notifying you if you selected the correct answer or not). Note that the timer will begin counting down from 60 seconds. Incorrect answers will reduce the time remaining by 10 seconds. If the timer reaches 0 before you answer the 5th question, the quiz will end.
 
 ![Step 2](https://github.com/mjsouthcott/04-code-quiz/blob/master/images/image2.JPG)
 
-3.  Once the quiz ends, enter your initials into the text input field and click the submit button.
+3.  Once the quiz ends, enter your initials into the text input field and click the Submit button.
 
 ![Step 3](https://github.com/mjsouthcott/04-code-quiz/blob/master/images/image3.JPG)
 
-4.  The High Scores page displays a list of initials and corresponding scores, sorted in descending order. The list contents are stored in localStorage, meaning it persists between quizzes (play more than once to see the list grow).
+4.  The High Scores page displays a list of initials and corresponding scores, sorted in descending order. The list contents are stored in localStorage, meaning they persist between quizzes (play more than once to see the list grow).
 
 ![Step 4](https://github.com/mjsouthcott/04-code-quiz/blob/master/images/image4.JPG)
 
