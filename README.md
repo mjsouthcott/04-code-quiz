@@ -14,23 +14,23 @@ Click on the following URL to view the website in your browser: [https://mjsouth
 
 1.  To start the quiz, click the Start Quiz button in the center of the window. To view the High Scores page, click the link in the top left corner. Note the timer in the top right corner.
 
-![Step 1]()
+![Step 1](https://github.com/mjsouthcott/04-code-quiz/blob/master/images/image1.JPG)
 
 2.  Once the quiz starts, a question from a randomized list will appear in the center of the window. Select 1 of 4 answers to move on to the next question (feedback will appear below the 4th answer telling you if you selected the correct answer or not). Note that the timer will begin counting down from 60 seconds (if it reaches 0 before you answer the 5th question, the quiz will end).
 
-![Step 2]()
+![Step 2](https://github.com/mjsouthcott/04-code-quiz/blob/master/images/image2.JPG)
 
 3.  Once the quiz ends, enter your initials into the text input field and click the submit button.
 
-![Step 3]()
+![Step 3](https://github.com/mjsouthcott/04-code-quiz/blob/master/images/image3.JPG)
 
 4.  The High Scores page displays a list of initials and corresponding scores, sorted in descending order. The list contents are stored in localStorage, meaning it persists between quizzes (play more than once to see the list grow).
 
-![Step 4]()
+![Step 4](https://github.com/mjsouthcott/04-code-quiz/blob/master/images/image4.JPG)
 
 5.  Click the Clear High Scores button to clear the list and the Go Back button to return to the home page.
 
-![Step 5]()
+![Step 5](https://github.com/mjsouthcott/04-code-quiz/blob/master/images/image5.JPG)
 
 ## Credits
 
