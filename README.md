@@ -2,7 +2,7 @@
 
 ## Description
 
-This website quizzes users on their basic Javascript knowledge. Users have 45 seconds to answer 5 multiple choice questions. For each incorrect answer, 5 seconds is subtracted from the remaining time. Once they've completed the quiz, users can add their initials to a high score list.
+This website quizzes users on their basic Javascript knowledge. Users have 60 seconds to answer 5 multiple choice questions. For each incorrect answer, 10 seconds is subtracted from the remaining time. After completing the quiz, users have the option to add their initials to a high score list.
 
 This website meets all of the acceptance criteria specified by the customer.
 
